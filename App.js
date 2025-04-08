@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Card from './screens/card';
 
 export default function App() {
-  return <PurpleScreen />;
+  return <Card />;
 }
 
 const styles = StyleSheet.create({
