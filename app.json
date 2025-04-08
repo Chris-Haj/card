@@ -2,6 +2,7 @@
   "expo": {
     "name": "MyReactNativeApp",
     "slug": "MyReactNativeApp",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "host": "lan"
   }
 }
