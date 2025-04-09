@@ -1,152 +1,182 @@
-// screens/StudentCard.js
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
+import COLORS from '../constants/colors';
 
-export default function Card() {
+
+
+
+
+const StudentCard = () => {
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="light-content" />
 
+      {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Student Carsdasdsd</Text>
+        <Ionicons name="arrow-back" size={24} color="white" />
+        <Text style={styles.headerTitle}>Student Card</Text>
+        <Text style={styles.headerRight}>He</Text>
       </View>
 
+      {/* Card Container */}
       <View style={styles.cardContainer}>
-        {/* Header */}
+        {/* University Logo Section */}
+        <View style={styles.logoSection}>
+          <Text style={styles.hebrewText}>האוניברסיטה העברית בירושלים</Text>
+          <Text style={styles.englishText}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
+        </View>
 
+        {/* Student Info Section */}
+        <View style={styles.infoSection}>
+          <View style={styles.leftInfo}>
+            <View style={styles.infoItem}>
+              <Text style={styles.label}>Student Name</Text>
+              <Text style={styles.value}>Christopher Haj</Text>
+            </View>
 
-        {/* Card */}
-        <View style={styles.card}>
-          {/* Upper Section */}
-          <View style={styles.upperSection}>
-            <Text style={styles.label}>Student Name</Text>
-            <Text style={styles.value}>Christopher Haj</Text>
+            <View style={styles.infoItem}>
+              <Text style={styles.label}>Academic Institution</Text>
+              <Text style={styles.value}>The Hebrew University{'\n'}of Jerusalem</Text>
+            </View>
 
-            <Text style={styles.label}>Academic Institution</Text>
-            <Text style={styles.value}>The Hebrew University of Jerusalem</Text>
-
-            <Text style={styles.label}>ID</Text>
-            <Text style={styles.value}>207824772</Text>
-
-            {/* Profile Photo */}
-            <Image
-              style={styles.profile}
-              source={require('../images/mejpeg.jpeg')}
-            />
-
-            {/* Badge */}
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>תשפ"ה</Text>
-              <Text style={styles.badgeSubtext}>2024–2025</Text>
+            <View style={styles.infoItem}>
+              <Text style={styles.label}>ID</Text>
+              <Text style={styles.value}>207824772</Text>
             </View>
           </View>
 
-          {/* Barcode Placeholder */}
-          <View style={styles.barcodeContainer}>
-            <Text style={styles.barcode}>||||||||||||||||||</Text>
-            <Text style={styles.value}>212523906</Text>
+          <View style={styles.rightInfo}>
+            <Image
+              style={styles.studentPhoto}
+              source={require('../images/mejpeg.jpeg')} // Add your photo path
+            />
+            <View style={styles.yearContainer}>
+              <Text style={styles.yearText}>תשפ״ה</Text>
+              <Text style={styles.yearText}>2024-2025</Text>
+            </View>
           </View>
         </View>
 
-        {/* Footer Date */}
-        <Text style={styles.date}>08-04-2025</Text>
+        {/* Barcode Section */}
+        <View style={styles.barcodeSection}>
+
+          <Text style={styles.barcodeNumber}>207824772</Text>
+        </View>
       </View>
-    </View>
+
+      {/* Expiry Date */}
+      <Text style={styles.expiryDate}>08-04-2025</Text>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  screen: {
+  container: {
     flex: 1,
-    backgroundColor: '#F2F3F5',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-  },
-  cardContainer: {
-    width: '90%',
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    paddingVertical: 20,
-    alignItems: 'center',
-    elevation: 5,
+    backgroundColor: '#2D2D3A',
   },
   header: {
-    padding: 16,
-    backgroundColor: '#4F2C56',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16,
-    elevation: 3,
-    zIndex: 1,
-  },
-  headerText: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#4F2C56',
-    textAlign: 'center',
-  },
-  card: {
-    width: '90%',
-    marginTop: 20,
-    backgroundColor: '#4F2C56',
-    borderRadius: 16,
+    justifyContent: 'space-between',
     padding: 16,
   },
-  upperSection: {
-    position: 'relative',
+  headerTitle: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: '500',
+  },
+  headerRight: {
+    color: 'white',
+    fontSize: 16,
+  },
+  cardContainer: {
+    backgroundColor: 'white',
+    margin: 20,
+    borderRadius: 15,
+    overflow: 'hidden',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  logoSection: {
+    backgroundColor: '#009688',
+    padding: 15,
+    alignItems: 'center',
+  },
+  hebrewText: {
+    color: 'white',
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  englishText: {
+    color: 'white',
+    fontSize: 14,
+  },
+  infoSection: {
+    flexDirection: 'row',
+    padding: 20,
+    backgroundColor: '#2D2D3A',
+  },
+  leftInfo: {
+    flex: 1,
+  },
+  rightInfo: {
+    alignItems: 'center',
+  },
+  infoItem: {
+    marginBottom: 15,
   },
   label: {
-    color: '#ccc',
+    color: '#fff',
     fontSize: 12,
-    marginTop: 10,
+    marginBottom: 5,
   },
   value: {
     color: '#fff',
-    fontWeight: 'bold',
     fontSize: 16,
+    fontWeight: '500',
   },
-  profile: {
-    width: 90,
-    height: 90,
-    borderRadius: 8,
-    position: 'absolute',
-    top: 10,
-    right: 10,
+  studentPhoto: {
+    width: 120,
+    height: 120,
+    borderRadius: 10,
+    marginBottom: 10,
   },
-  badge: {
-    marginTop: 20,
+  yearContainer: {
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: 'white',
     padding: 8,
-    borderRadius: 6,
-    width: 100,
     alignItems: 'center',
   },
-  badgeText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  badgeSubtext: {
-    color: '#fff',
+  yearText: {
+    color: 'white',
     fontSize: 12,
   },
-  barcodeContainer: {
-    backgroundColor: '#fff',
-    marginTop: 20,
-    padding: 10,
+  barcodeSection: {
+    backgroundColor: 'white',
+    padding: 20,
     alignItems: 'center',
-    borderRadius: 6,
   },
   barcode: {
-    fontSize: 24,
-    letterSpacing: 4,
+    width: '100%',
+    height: 70,
+    resizeMode: 'contain',
   },
-  date: {
+  barcodeNumber: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#000',
+  },
+  expiryDate: {
+    color: '#fff',
+    textAlign: 'center',
     marginTop: 20,
     fontSize: 16,
-    color: '#4F2C56',
-    fontWeight: 'bold',
   },
 });
+
+export default StudentCard;
