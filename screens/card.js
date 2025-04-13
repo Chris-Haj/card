@@ -58,8 +58,17 @@ const StudentCard = () => {
             <View style={cardStyles.card}>
               {/* Cyan Top Section */}
               <View style={cardStyles.cardHeader}>
-                <Text style={cardStyles.cardHeaderText}>האוניברסיטה העברית בירושלים</Text>
-                <Text style={cardStyles.cardHeaderSubText}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
+                <View style={cardStyles.logoContainer}>
+                  <Image
+                    source={require('../images/Hebrew_University_Logo.svg.png')}
+                    style={cardStyles.logoImage}
+                    resizeMode="contain" // This ensures the image scales properly
+                  />
+                </View>
+                <View style={cardStyles.headerTextContainer}>
+                  <Text style={cardStyles.cardHeaderText}>האוניברסיטה העברית בירושלים</Text>
+                  <Text style={cardStyles.cardHeaderText}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
+                </View>
               </View>
 
               {/* Purple Middle Section */}

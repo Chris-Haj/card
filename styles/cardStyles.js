@@ -1,6 +1,6 @@
 // styles/cardStyles.js
 
-import { StyleSheet, Platform } from 'react-native'; // Added Platform import
+import { StyleSheet, Platform } from 'react-native';
 import COLORS from '../constants/colors';
 
 export const cardStyles = StyleSheet.create({
@@ -35,9 +35,8 @@ export const cardStyles = StyleSheet.create({
     card: {
         marginTop: 20,
         marginBottom: 20,
-        borderRadius: 25, // Increased border radius
+        borderRadius: 25,
         backgroundColor: '#FFFFFF',
-        // Enhanced shadow for iOS
         ...Platform.select({
             ios: {
                 shadowColor: '#000',
@@ -48,7 +47,6 @@ export const cardStyles = StyleSheet.create({
                 shadowOpacity: 0.3,
                 shadowRadius: 8,
             },
-            // Enhanced shadow for Android
             android: {
                 elevation: 8,
             },
@@ -57,37 +55,43 @@ export const cardStyles = StyleSheet.create({
     cardHeader: {
         backgroundColor: COLORS.cyan,
         padding: 15,
-        alignItems: 'center',
-        borderTopLeftRadius: 25, // Match the card's border radius
+        borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
+        flexDirection: 'row-reverse', // Makes items align horizontally
+        alignItems: 'center', // Centers items vertically
+    },
+    logoContainer: {
+        width: 60, // Adjust this value based on your needs
+        height: 60, // Adjust this value based on your needs
+        marginLeft: -30 // Space between logo and text
+    },
+    logoImage: {
+        width: '100%',
+        height: '100%',
+        marginLeft: -40
+    },
+    headerTextContainer: {
+        flex: 1, // Takes up remaining space
+        alignItems: 'center', // Centers text horizontally
     },
     cardHeaderText: {
         color: '#FFFFFF',
-        fontSize: 16,
+        fontSize: 10,
         marginBottom: 5,
-    },
-    cardHeaderSubText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-    },
-    cardBody: {
-        backgroundColor: COLORS.primary,
-        padding: 20,
-        minHeight: 200,
-    },
-    cardFooter: {
-        backgroundColor: '#FFFFFF',
-        padding: 20,
-        alignItems: 'center',
-        borderBottomLeftRadius: 25, // Match the card's border radius
-        borderBottomRightRadius: 25,
     },
 
     cardBody: {
         backgroundColor: COLORS.primary,
         padding: 20,
-        flexDirection: 'row', // Makes the container horizontal
+        flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    cardFooter: {
+        backgroundColor: '#FFFFFF',
+        padding: 20,
+        alignItems: 'center',
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
     },
     infoContainer: {
         flex: 1,
@@ -127,18 +131,6 @@ export const cardStyles = StyleSheet.create({
         fontSize: 12,
         textAlign: 'center',
     },
-    barcode: {
-        width: '60%',
-        height: '60',
-        margin: '20',
-    },
-
-    cardFooter: {
-        backgroundColor: '#FFFFFF',
-        padding: 20,
-        borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25,
-    },
     barcodeContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -150,8 +142,8 @@ export const cardStyles = StyleSheet.create({
         alignItems: 'center',
     },
     barcode: {
-        width: '80%',  // Adjust as needed
-        height: 70,    // Adjust as needed
+        width: '80%',
+        height: 70,
         resizeMode: 'contain',
     },
     barcodeNumber: {
@@ -165,64 +157,27 @@ export const cardStyles = StyleSheet.create({
         alignItems: 'center',
     },
     arrowText: {
-        fontSize: 80,
+        fontSize: 60,
         color: '#000000',
     },
-
-    // styles/cardStyles.js
-    // Add these new styles
-
-    cardFooter: {
-        backgroundColor: '#FFFFFF',
-        padding: 20,
-        borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25,
-    },
-    barcodeContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-    },
-    barcodeContent: {
-        flex: 1,
-        alignItems: 'center',
-    },
-    barcode: {
-        width: '80%',  // Adjust as needed
-        height: 70,    // Adjust as needed
-        resizeMode: 'contain',
-    },
-    barcodeNumber: {
-        marginTop: 10,
-        fontSize: 16,
-        color: '#000000',
-    },
-    arrowButton: {
-        padding: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    arrowText: {
-        fontSize: 30,
-        color: '#000000',
-    },
-    // styles/cardStyles.js
-    // Add these new styles
+    // In your cardStyles.js, update the time-related styles:
 
     timeContainer: {
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: -5, // Reduced from 20 to bring it closer to card
         marginBottom: 20,
     },
     timeText: {
         color: COLORS.primary,
-        fontSize: 24,
+        fontSize: 15,
         fontWeight: '500',
         marginBottom: 8,
+        letterSpacing: 28, // Add space between numbers
     },
     dateText: {
         color: COLORS.primary,
-        fontSize: 18,
+        fontSize: 22,
+        fontWeight: 'bold',
+        letterSpacing: 4, // Add space between numbers/dashes
     },
 });
