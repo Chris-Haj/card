@@ -1,11 +1,46 @@
 // screens/card.js
-
-import React from 'react';
-import { View, Text, SafeAreaView, StatusBar, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity } from 'react-native';
 import { cardStyles } from '../styles/cardStyles';
-import COLORS from '../constants/colors';
+// import COLORS from '../constants/colors';
 
 const StudentCard = () => {
+  const [currentTime, setCurrentTime] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    // Update time and date immediately
+    updateTimeAndDate();
+
+    // Set up interval to update time every second
+    const interval = setInterval(updateTimeAndDate, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  const updateTimeAndDate = () => {
+    const now = new Date();
+
+    // Format time as HH:MM:SS
+    const time = now.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    // Format date as DD-MM-YYYY
+    const date = now.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    }).replace(/\//g, '-');
+
+    setCurrentTime(time);
+    setCurrentDate(date);
+  };
+
+  // Move the return statement outside of updateTimeAndDate
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -42,7 +77,7 @@ const StudentCard = () => {
 
                   <View style={cardStyles.infoSection}>
                     <Text style={cardStyles.infoLabel}>ID</Text>
-                    <Text style={cardStyles.infoValue}>212523906</Text>
+                    <Text style={cardStyles.infoValue}>207824772</Text>
                   </View>
                 </View>
 
@@ -50,7 +85,7 @@ const StudentCard = () => {
                 <View style={cardStyles.photoContainer}>
                   <Image
                     style={cardStyles.photo}
-                    source={require('../images/mejpeg.jpeg')} // Make sure to add your photo
+                    source={require('../images/mejpeg.jpeg')}
                   />
                   <View style={cardStyles.yearBox}>
                     <Text style={cardStyles.yearText}>תשפ״ה</Text>
@@ -61,10 +96,30 @@ const StudentCard = () => {
 
               {/* White Bottom Section */}
               <View style={cardStyles.cardFooter}>
-                <Text>
-                  207824772
-                </Text>
+                <View style={cardStyles.barcodeContainer}>
+                  <TouchableOpacity style={cardStyles.arrowButton}>
+                    <Text style={cardStyles.arrowText}>‹</Text>
+                  </TouchableOpacity>
+
+                  <View style={cardStyles.barcodeContent}>
+                    <Image
+                      style={cardStyles.barcode}
+                      source={require('../images/wide_barcode.png')}
+                    />
+                    <Text style={cardStyles.barcodeNumber}>207824772</Text>
+                  </View>
+
+                  <TouchableOpacity style={cardStyles.arrowButton}>
+                    <Text style={cardStyles.arrowText}>›</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
+            </View>
+
+            {/* Add the time and date display */}
+            <View style={cardStyles.timeContainer}>
+              <Text style={cardStyles.timeText}>{currentTime}</Text>
+              <Text style={cardStyles.dateText}>{currentDate}</Text>
             </View>
           </View>
         </SafeAreaView>

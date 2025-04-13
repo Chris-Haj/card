@@ -113,7 +113,6 @@ export const cardStyles = StyleSheet.create({
     photo: {
         width: 120,
         height: 120,
-        borderRadius: 10,
         marginBottom: 10,
     },
     yearBox: {
@@ -127,5 +126,103 @@ export const cardStyles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 12,
         textAlign: 'center',
+    },
+    barcode: {
+        width: '60%',
+        height: '60',
+        margin: '20',
+    },
+
+    cardFooter: {
+        backgroundColor: '#FFFFFF',
+        padding: 20,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
+    },
+    barcodeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    barcodeContent: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    barcode: {
+        width: '80%',  // Adjust as needed
+        height: 70,    // Adjust as needed
+        resizeMode: 'contain',
+    },
+    barcodeNumber: {
+        marginTop: 10,
+        fontSize: 16,
+        color: '#000000',
+    },
+    arrowButton: {
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    arrowText: {
+        fontSize: 80,
+        color: '#000000',
+    },
+
+    // styles/cardStyles.js
+    // Add these new styles
+
+    cardFooter: {
+        backgroundColor: '#FFFFFF',
+        padding: 20,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
+    },
+    barcodeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    barcodeContent: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    barcode: {
+        width: '80%',  // Adjust as needed
+        height: 70,    // Adjust as needed
+        resizeMode: 'contain',
+    },
+    barcodeNumber: {
+        marginTop: 10,
+        fontSize: 16,
+        color: '#000000',
+    },
+    arrowButton: {
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    arrowText: {
+        fontSize: 30,
+        color: '#000000',
+    },
+    // styles/cardStyles.js
+    // Add these new styles
+
+    timeContainer: {
+        alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    timeText: {
+        color: COLORS.primary,
+        fontSize: 24,
+        fontWeight: '500',
+        marginBottom: 8,
+    },
+    dateText: {
+        color: COLORS.primary,
+        fontSize: 18,
     },
 });
