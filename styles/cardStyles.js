@@ -21,11 +21,16 @@ export const cardStyles = StyleSheet.create({
     headerTitle: {
         color: COLORS.text.light,
         fontSize: 20,
-        fontWeight: '500',
     },
     headerText: {
         color: COLORS.text.light,
         fontSize: 16,
+        fontWeight: '500',
+
+    },
+    headerTextArrow: {
+        color: COLORS.text.light,
+        fontSize: 30
     },
     contentContainer: {
         flex: 1,

@@ -48,7 +48,7 @@ const StudentCard = () => {
         <SafeAreaView style={cardStyles.safeArea}>
           {/* Purple Header Section */}
           <View style={cardStyles.header}>
-            <Text style={cardStyles.headerText}>Back</Text>
+            <Text style={cardStyles.headerTextArrow}>←</Text>
             <Text style={cardStyles.headerTitle}>Student Card</Text>
             <Text style={cardStyles.headerText}>He</Text>
           </View>
