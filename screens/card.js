@@ -66,8 +66,8 @@ const StudentCard = () => {
                   />
                 </View>
                 <View style={cardStyles.headerTextContainer}>
-                  <Text style={cardStyles.cardHeaderText}>האוניברסיטה העברית בירושלים</Text>
-                  <Text style={cardStyles.cardHeaderText}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
+                  <Text style={cardStyles.cardHeaderTextHebrew}>האוניברסיטה העברית בירושלים</Text>
+                  <Text style={cardStyles.cardHeaderTextEnglish}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
                 </View>
               </View>
 

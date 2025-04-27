@@ -68,18 +68,26 @@ export const cardStyles = StyleSheet.create({
     logoImage: {
         width: '100%',
         height: '100%',
-        marginLeft: -40
+        marginLeft: -65
     },
     headerTextContainer: {
-        flex: 1, // Takes up remaining space
-        alignItems: 'center', // Centers text horizontally
+        alignItems: 'center',
+        width: '90%', // Adjust this value as needed
     },
-    cardHeaderText: {
+    cardHeaderTextHebrew: {
         color: '#FFFFFF',
         fontSize: 10,
         marginBottom: 5,
+        textAlign: 'center',
+        width: '100%',
     },
-
+    cardHeaderTextEnglish: {
+        color: '#FFFFFF',
+        fontSize: 7,
+        marginBottom: 5,
+        textAlign: 'center',
+        width: '100%',
+    },
     cardBody: {
         backgroundColor: COLORS.primary,
         padding: 20,
@@ -115,16 +123,18 @@ export const cardStyles = StyleSheet.create({
         marginLeft: 20,
     },
     photo: {
-        width: 120,
-        height: 120,
+        width: 150,
+        height: 150,
         marginBottom: 10,
     },
     yearBox: {
-        borderWidth: 1,
+        borderWidth: 2,
+        fontWeight: 'bold',
         borderColor: '#FFFFFF',
-        padding: 8,
+        padding: 10,
+        width: '100%',
         alignItems: 'center',
-        borderRadius: 4,
+
     },
     yearText: {
         color: '#FFFFFF',
