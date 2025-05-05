@@ -1,182 +1,143 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
+// screens/card.js
+import React, { useState, useEffect } from 'react';
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity } from 'react-native';
+import { cardStyles } from '../styles/cardStyles';
 import COLORS from '../constants/colors';
+import USER_INFO from '../constants/information';
 
+const StudentCard = ({ navigation }) => {
+  const [currentTime, setCurrentTime] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
+  useEffect(() => {
+    // Update time and date immediately
+    updateTimeAndDate();
 
+    // Set up interval to update time every second
+    const interval = setInterval(updateTimeAndDate, 1000);
 
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
 
-const StudentCard = () => {
+  const updateTimeAndDate = () => {
+    const now = new Date();
+
+    // Format time as HH:MM:SS
+    const time = now.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
+    // Format date as DD-MM-YYYY
+    const date = now.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    }).replace(/\//g, '-');
+
+    setCurrentTime(time);
+    setCurrentDate(date);
+  };
+
+  // Move the return statement outside of updateTimeAndDate
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       <StatusBar barStyle="light-content" />
-
-      {/* Header */}
-      <View style={styles.header}>
-        <Ionicons name="arrow-back" size={24} color="white" />
-        <Text style={styles.headerTitle}>Student Card</Text>
-        <Text style={styles.headerRight}>He</Text>
-      </View>
-
-      {/* Card Container */}
-      <View style={styles.cardContainer}>
-        {/* University Logo Section */}
-        <View style={styles.logoSection}>
-          <Text style={styles.hebrewText}>האוניברסיטה העברית בירושלים</Text>
-          <Text style={styles.englishText}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
-        </View>
-
-        {/* Student Info Section */}
-        <View style={styles.infoSection}>
-          <View style={styles.leftInfo}>
-            <View style={styles.infoItem}>
-              <Text style={styles.label}>Student Name</Text>
-              <Text style={styles.value}>Christopher Haj</Text>
-            </View>
-
-            <View style={styles.infoItem}>
-              <Text style={styles.label}>Academic Institution</Text>
-              <Text style={styles.value}>The Hebrew University{'\n'}of Jerusalem</Text>
-            </View>
-
-            <View style={styles.infoItem}>
-              <Text style={styles.label}>ID</Text>
-              <Text style={styles.value}>207824772</Text>
-            </View>
+      <View style={cardStyles.outerContainer}>
+        <SafeAreaView style={cardStyles.safeArea}>
+          {/* Purple Header Section */}
+          <View style={cardStyles.header}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={cardStyles.headerTextArrow}>←</Text>
+            </TouchableOpacity>
+            <Text style={cardStyles.headerTitle}>Student Card</Text>
+            <Text style={cardStyles.headerText}>He</Text>
           </View>
 
-          <View style={styles.rightInfo}>
-            <Image
-              style={styles.studentPhoto}
-              source={require('../images/mejpeg.jpeg')} // Add your photo path
-            />
-            <View style={styles.yearContainer}>
-              <Text style={styles.yearText}>תשפ״ה</Text>
-              <Text style={styles.yearText}>2024-2025</Text>
+          <View style={cardStyles.contentContainer}>
+            {/* Card */}
+            <View style={cardStyles.card}>
+              {/* Cyan Top Section */}
+              <View style={cardStyles.cardHeader}>
+                <View style={cardStyles.logoContainer}>
+                  <Image
+                    source={require('../images/Hebrew_University_Logo.svg.png')}
+                    style={cardStyles.logoImage}
+                    resizeMode="contain" // This ensures the image scales properly
+                  />
+                </View>
+                <View style={cardStyles.headerTextContainer}>
+                  <Text style={cardStyles.cardHeaderTextHebrew}>האוניברסיטה העברית בירושלים</Text>
+                  <Text style={cardStyles.cardHeaderTextEnglish}>THE HEBREW UNIVERSITY OF JERUSALEM</Text>
+                </View>
+              </View>
+
+              {/* Purple Middle Section */}
+              <View style={cardStyles.cardBody}>
+                <View style={cardStyles.infoContainer}>
+                  <View style={cardStyles.infoSection}>
+                    <Text style={cardStyles.infoLabel}>Student Name</Text>
+                    <Text style={cardStyles.infoValue}>{USER_INFO.firstName+" "+USER_INFO.lastName}</Text>
+                  </View>
+
+                  <View style={cardStyles.infoSection}>
+                    <Text style={cardStyles.infoLabel}>Academic Institution</Text>
+                    <Text style={cardStyles.infoValue}>The Hebrew University{'\n'}of Jerusalem</Text>
+                  </View>
+
+                  <View style={cardStyles.infoSection}>
+                    <Text style={cardStyles.infoLabel}>ID</Text>
+                    <Text style={cardStyles.infoValue}>{USER_INFO.id}</Text>
+                  </View>
+                </View>
+
+                {/* Right Side - Photo and Year */}
+                <View style={cardStyles.photoContainer}>
+                  <Image
+                    style={cardStyles.photo}
+                    source={require('../images/mejpg.jpg')}
+                  />
+                  <View style={cardStyles.yearBox}>
+                    <Text style={cardStyles.yearText}>תשפ״ה</Text>
+                    <Text style={cardStyles.yearText}>2024-2025</Text>
+                  </View>
+                </View>
+              </View>
+
+              {/* White Bottom Section */}
+              <View style={cardStyles.cardFooter}>
+                <View style={cardStyles.barcodeContainer}>
+                  <TouchableOpacity style={cardStyles.arrowButton}>
+                    <Text style={cardStyles.arrowText}>‹</Text>
+                  </TouchableOpacity>
+
+                  <View style={cardStyles.barcodeContent}>
+                    <Image
+                      style={cardStyles.barcode}
+                      source={require('../images/wide_barcode.png')}
+                    />
+                    <Text style={cardStyles.barcodeNumber}>{USER_INFO.id}</Text>
+                  </View>
+
+                  <TouchableOpacity style={cardStyles.arrowButton}>
+                    <Text style={cardStyles.arrowText}>›</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+
+            {/* Add the time and date display */}
+            <View style={cardStyles.timeContainer}>
+              <Text style={cardStyles.timeText}>{currentTime}</Text>
+              <Text style={cardStyles.dateText}>{currentDate}</Text>
             </View>
           </View>
-        </View>
-
-        {/* Barcode Section */}
-        <View style={styles.barcodeSection}>
-
-          <Text style={styles.barcodeNumber}>207824772</Text>
-        </View>
+        </SafeAreaView>
       </View>
-
-      {/* Expiry Date */}
-      <Text style={styles.expiryDate}>08-04-2025</Text>
-    </SafeAreaView>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2D2D3A',
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16,
-  },
-  headerTitle: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '500',
-  },
-  headerRight: {
-    color: 'white',
-    fontSize: 16,
-  },
-  cardContainer: {
-    backgroundColor: 'white',
-    margin: 20,
-    borderRadius: 15,
-    overflow: 'hidden',
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-  },
-  logoSection: {
-    backgroundColor: '#009688',
-    padding: 15,
-    alignItems: 'center',
-  },
-  hebrewText: {
-    color: 'white',
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  englishText: {
-    color: 'white',
-    fontSize: 14,
-  },
-  infoSection: {
-    flexDirection: 'row',
-    padding: 20,
-    backgroundColor: '#2D2D3A',
-  },
-  leftInfo: {
-    flex: 1,
-  },
-  rightInfo: {
-    alignItems: 'center',
-  },
-  infoItem: {
-    marginBottom: 15,
-  },
-  label: {
-    color: '#fff',
-    fontSize: 12,
-    marginBottom: 5,
-  },
-  value: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  studentPhoto: {
-    width: 120,
-    height: 120,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  yearContainer: {
-    borderWidth: 1,
-    borderColor: 'white',
-    padding: 8,
-    alignItems: 'center',
-  },
-  yearText: {
-    color: 'white',
-    fontSize: 12,
-  },
-  barcodeSection: {
-    backgroundColor: 'white',
-    padding: 20,
-    alignItems: 'center',
-  },
-  barcode: {
-    width: '100%',
-    height: 70,
-    resizeMode: 'contain',
-  },
-  barcodeNumber: {
-    marginTop: 10,
-    fontSize: 16,
-    color: '#000',
-  },
-  expiryDate: {
-    color: '#fff',
-    textAlign: 'center',
-    marginTop: 20,
-    fontSize: 16,
-  },
-});
 
 export default StudentCard;

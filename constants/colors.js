@@ -1,9 +1,13 @@
-purple = "#4A374D"
-cyan = "#238C85"
 
 const COLORS = {
 
     primary: '#4A374D',
-    cyan: '#238C85'
+    cyan: '#238C85',
+    background: 'white',
+    text: {
+        light: 'white'
+    }
 
 }
+
+export default COLORS;
