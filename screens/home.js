@@ -103,7 +103,7 @@ const HomePage = ({ navigation }) => {
                             <MaterialIcons
                                 name={getIconNameForApp(app.name)}
                                 size={40}
-                                color="#238C85" // Using your cyan color
+                                color="#238C85"
                             />
                             <Text style={homeStyles.appName}>{app.name}</Text>
                         </TouchableOpacity>
@@ -125,7 +125,9 @@ const HomePage = ({ navigation }) => {
                     <MaterialIcons name="home" size={30} color="#4A374D" />
                 </TouchableOpacity>
 
-                <View style={{ width: 40 }} /> {/* Empty space to balance layout */}
+                <View style={{ width: 40 }}>
+                    {/* This empty View is fine, no text here */}
+                </View>
             </View>
         </SafeAreaView>
     );

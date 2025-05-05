@@ -4,7 +4,7 @@ import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity } from 're
 import { cardStyles } from '../styles/cardStyles';
 // import COLORS from '../constants/colors';
 
-const StudentCard = () => {
+const StudentCard = ({ navigation }) => {
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
 
@@ -48,7 +48,9 @@ const StudentCard = () => {
         <SafeAreaView style={cardStyles.safeArea}>
           {/* Purple Header Section */}
           <View style={cardStyles.header}>
-            <Text style={cardStyles.headerTextArrow}>←</Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Text style={cardStyles.headerTextArrow}>←</Text>
+            </TouchableOpacity>
             <Text style={cardStyles.headerTitle}>Student Card</Text>
             <Text style={cardStyles.headerText}>He</Text>
           </View>
