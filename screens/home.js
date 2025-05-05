@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import { homeStyles } from '../styles/homeStyles';
 import { MaterialIcons } from '@expo/vector-icons';
+import USER_INFO from '../constants/information';
+
 
 const HomePage = ({ navigation }) => {
     // Array of app data
@@ -78,7 +80,7 @@ const HomePage = ({ navigation }) => {
             <ScrollView showsVerticalScrollIndicator={false}>
                 {/* Welcome Section */}
                 <View style={homeStyles.welcomeSection}>
-                    <Text style={homeStyles.welcomeText}>{getGreeting()} Christopher</Text>
+                    <Text style={homeStyles.welcomeText}>{getGreeting()} {USER_INFO.firstName}</Text>
                     <TouchableOpacity
                         style={homeStyles.cardIcon}
                         onPress={() => navigation.navigate('StudentCard')}
@@ -121,10 +123,9 @@ const HomePage = ({ navigation }) => {
                     <Text style={homeStyles.footerText}>Messages</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={homeStyles.footerMiddle}>
-                    <MaterialIcons name="home" size={30} color="#4A374D" />
+                <TouchableOpacity style={homeStyles.footerRight}>
+                    <MaterialIcons name="home" size={24} color="#4A374D" />
                 </TouchableOpacity>
-
                 <View style={{ width: 40 }}>
                     {/* This empty View is fine, no text here */}
                 </View>

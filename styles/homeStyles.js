@@ -153,14 +153,8 @@ export const homeStyles = StyleSheet.create({
     footerLeft: {
         alignItems: 'center',
     },
-    footerMiddle: {
-        width: 60,
-        height: 60,
-        backgroundColor: '#FFF',
-        borderRadius: 30,
-        justifyContent: 'center',
+    footerRight: {
         alignItems: 'center',
-        bottom: 20,
     },
     footerText: {
         color: '#FFF',

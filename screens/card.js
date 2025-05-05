@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity } from 'react-native';
 import { cardStyles } from '../styles/cardStyles';
-// import COLORS from '../constants/colors';
+import COLORS from '../constants/colors';
+import USER_INFO from '../constants/information';
 
 const StudentCard = ({ navigation }) => {
   const [currentTime, setCurrentTime] = useState('');
@@ -78,7 +79,7 @@ const StudentCard = ({ navigation }) => {
                 <View style={cardStyles.infoContainer}>
                   <View style={cardStyles.infoSection}>
                     <Text style={cardStyles.infoLabel}>Student Name</Text>
-                    <Text style={cardStyles.infoValue}>Christopher Haj</Text>
+                    <Text style={cardStyles.infoValue}>{USER_INFO.firstName+" "+USER_INFO.lastName}</Text>
                   </View>
 
                   <View style={cardStyles.infoSection}>
@@ -88,7 +89,7 @@ const StudentCard = ({ navigation }) => {
 
                   <View style={cardStyles.infoSection}>
                     <Text style={cardStyles.infoLabel}>ID</Text>
-                    <Text style={cardStyles.infoValue}>207824772</Text>
+                    <Text style={cardStyles.infoValue}>{USER_INFO.id}</Text>
                   </View>
                 </View>
 
@@ -96,7 +97,7 @@ const StudentCard = ({ navigation }) => {
                 <View style={cardStyles.photoContainer}>
                   <Image
                     style={cardStyles.photo}
-                    source={require('../images/mejpeg.jpeg')}
+                    source={require('../images/mejpg.jpg')}
                   />
                   <View style={cardStyles.yearBox}>
                     <Text style={cardStyles.yearText}>תשפ״ה</Text>
@@ -117,7 +118,7 @@ const StudentCard = ({ navigation }) => {
                       style={cardStyles.barcode}
                       source={require('../images/wide_barcode.png')}
                     />
-                    <Text style={cardStyles.barcodeNumber}>207824772</Text>
+                    <Text style={cardStyles.barcodeNumber}>{USER_INFO.id}</Text>
                   </View>
 
                   <TouchableOpacity style={cardStyles.arrowButton}>
